@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Security.Policy;
@@ -23,14 +24,7 @@ namespace Game
 
             AddComponent<Collider>().CollisionEnter += OnCollisionEnter;
 
-            _entity.Sprite = new char[,]
-            {
-                { ' ', ' ', '^', ' ', ' ' },
-                { ' ', '-', '#', '-', ' ' },
-                { '\\', '-', ' ', '-', '/' },
-                { ' ', '-', ' ', '-', ' ' },
-                { '_', '|', ' ', '|', '_' },
-            };
+            _entity.Sprite = PlayerSprite.Sprite;
 
             _entity.Position = new Point(4, Map.GroundY - _entity.Sprite.GetLength(0));
 
@@ -42,6 +36,8 @@ namespace Game
             Console.Clear();
             Console.WriteLine("Вы проиграли. Опыт который вы получили " + _score.Points);
             Console.ReadLine();
+
+            Process.GetCurrentProcess().Kill();
         }
 
         public override void StartUpdate()

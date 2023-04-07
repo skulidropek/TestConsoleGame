@@ -20,7 +20,7 @@ namespace Game
             Console.CursorVisible = false;
 
             while (true)
-            {
+            { 
                 MonoBehaviour[] monoBehaviours1 = Object.FindObjectsByType<MonoBehaviour>();
 
                 foreach (MonoBehaviour monoBehaviour in monoBehaviours1)
